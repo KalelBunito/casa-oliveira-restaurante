@@ -2,60 +2,56 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- adicionar favicon -->
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- adicionar favicon -->
+  <title>Casa Oliveira</title>
 </head>
 
 <body>
-    <nav>
-        <p>Casa Oliveira</p>
-        <ul>
-            <li>Início</li>
-            <li>Pedidos</li>
-            <li>Cadastro</li>
-        </ul>
-        <button>Sacola</button>
-        <button>Reservar Mesa</button>
-    </nav>
-    <header class="hero">
-        <div class="hero-informations">
-            <div class="hero-left">
-                <p>Cozinha sazonal - desde 2014</p>
-                <h1>Do campo à mesa, todos os dias.</h1>
-                <p>
-                    Massas frescas, horta própria e um menu que muda com as estações. Reserve ou peça para viver — a
-                    casa é sua.
-                </p>
-                <span class="hero-buttons">
-                    <button>Ver Cardápio</button>
-                    <button>Reservar Mesa</button>
-                </span>
-            </div>
-
-            <!-- parte direita -->
-            <div class="hero-right">
-                <img src="" alt="">
-                <button>Menu de Outono</button>
-                <p>Foto - prato assinatura</p>
-            </div>
-        </div>
-        <div class="informations">
-            <div>
-                <p>Horários</p>
-                <p>Ter–Dom · 12h às 23h</p>
-            </div>
-            <div>
-                <p>Endereço</p>
-                <p>Rua das Oliveiras, 88 — Centro</p>
-            </div>
-            <div>
-                <p>Avaliação</p>
-                <p>★ 4.9 · 1.240 avaliações</p>
-            </div>
-        </div>
-    </header>
+  <nav class="nav">
+    <p class="nav__logo">Casa Oliveira</p>
+    <ul class="nav__menu">
+      <li class="nav__item">Início</li>
+      <li class="nav__item">Pedidos</li>
+      <li class="nav__item">Cadastro</li>
+    </ul>
+    <button class="nav__button nav__button--bag">Sacola</button>
+    <button class="nav__button nav__button--reserve">Reservar mesa</button>
+  </nav>
+  <header class="hero">
+    <div class="hero__content">
+      <div class="hero__left">
+        <p class="hero__tagline">Cozinha sazonal - desde 2014</p>
+        <h1 class="hero__title">Do campo à mesa, todos os dias</h1>
+        <p class="hero__description">Massas frescas, horta própria e um menu que muda com as estações. Reserve ou peça para viver — a casa é sua.
+        </p>
+        <span class="hero__buttons">
+          <button class="hero__button hero__button--primary">Ver cardápio</button>
+          <button class="hero__button hero__button--secondary">Reservar mesa</button>
+        </span>
+      </div>
+      <div class="hero__right">
+        <img class="hero__image" src="" alt="">
+        <button class="hero__badge">Menu de Outuno</button>
+        <p class="hero__caption">Foto - prato assinatura</p>
+      </div>
+    </div>
+    <div class="info">
+      <div class="info__item">
+        <p class="info__label">Horário</p>
+        <p class="info__value">Ter–Dom · 12h às 23h</p>
+      </div>
+      <div class="info__item">
+        <p class="info__label">Endereço</p>
+        <p class="info__value">Rua das Oliveiras, 88 — Centro</p>
+      </div>
+      <div class="info__item">
+        <p class="info__label">Avaliação</p>
+        <p class="info__value">★ 4.9 · 1.240 avaliações</p>
+      </div>
+    </div>
+  </header>
 </body>
 
 </html>
