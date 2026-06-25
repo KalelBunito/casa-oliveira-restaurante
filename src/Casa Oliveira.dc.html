@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+</style>
+</helmet>
+
+<div style="min-width:100%;min-height:100vh;box-sizing:border-box;background:#f1ece1;font-family:'Hanken Grotesk',sans-serif;color:#232a22">
+
+  <!-- ============ HEADER / NAV ============ -->
+  <div style="position:sticky;top:0;z-index:60;background:rgba(241,236,225,.9);backdrop-filter:blur(10px);border-bottom:1px solid #e2dccb;padding:14px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9a9484;border:1px solid #cfc8b6;padding:3px 7px;border-radius:4px">protótipo</div>
+      <div style="display:flex;align-items:center;gap:9px">
+        <div style="width:9px;height:9px;border-radius:50%;background:#bf6a43"></div>
+        <div style="font-family:'Instrument Serif',serif;font-size:27px;color:#232a22;line-height:1;white-space:nowrap">Casa Oliveira</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:34px;font-size:15px">
+      <div onClick="{{ goHome }}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px">
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}"><span style="color:#232a22;font-weight:600">Início</span></sc-if><sc-if value="{{ notHome }}" hint-placeholder-val="{{ false }}"><span style="color:#6a7464">Início</span></sc-if>
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}"><div style="width:5px;height:5px;border-radius:50%;background:#bf6a43"></div></sc-if>
+      </div>
+      <div onClick="{{ goPedidos }}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px">
+        <sc-if value="{{ isPedidos }}" hint-placeholder-val="{{ false }}"><span style="color:#232a22;font-weight:600">Pedidos</span></sc-if><sc-if value="{{ notPedidos }}" hint-placeholder-val="{{ true }}"><span style="color:#6a7464">Pedidos</span></sc-if>
+        <sc-if value="{{ isPedidos }}" hint-placeholder-val="{{ false }}"><div style="width:5px;height:5px;border-radius:50%;background:#bf6a43"></div></sc-if>
+      </div>
+      <div onClick="{{ goCadastro }}" style="cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px">
+        <sc-if value="{{ isCadastro }}" hint-placeholder-val="{{ false }}"><span style="color:#232a22;font-weight:600">Cadastro</span></sc-if><sc-if value="{{ notCadastro }}" hint-placeholder-val="{{ true }}"><span style="color:#6a7464">Cadastro</span></sc-if>
+        <sc-if value="{{ isCadastro }}" hint-placeholder-val="{{ false }}"><div style="width:5px;height:5px;border-radius:50%;background:#bf6a43"></div></sc-if>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="display:flex;align-items:center;gap:8px;color:#6a7464;font-size:14px;font-weight:500;border:1px solid #ddd6c5;border-radius:999px;padding:8px 15px">Sacola · 3</div>
+      <div style="background:#2c4233;color:#f1ece1;border-radius:999px;padding:9px 18px;font-weight:600;font-size:14px">Reservar mesa</div>
+    </div>
+  </div>
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="max-width:1180px;margin:0 auto;padding:34px 40px 70px">
+
+      <!-- hero -->
+      <div style="display:flex;border-radius:26px;overflow:hidden;background:#2c4233;min-height:440px;box-shadow:0 24px 50px rgba(35,42,34,.18)">
+        <div style="flex:1.08;padding:58px 56px;display:flex;flex-direction:column;justify-content:center;color:#f1ece1">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#cf9a7e;margin-bottom:22px">Cozinha sazonal · desde 2014</div>
+          <div style="font-family:'Instrument Serif',serif;font-size:62px;line-height:1.02;letter-spacing:-.01em;text-wrap:balance">Do campo à mesa,<br>todos os dias.</div>
+          <div style="font-size:17px;line-height:1.6;color:#c3ccbd;margin:24px 0 32px;max-width:430px">Massas frescas, horta própria e um menu que muda com as estações. Reserve ou peça para viver — a casa é sua.</div>
+          <div style="display:flex;gap:13px">
+            <div style="background:#bf6a43;color:#fcf7ef;font-weight:600;padding:14px 26px;border-radius:999px;font-size:15px">Ver cardápio</div>
+            <div style="border:1px solid rgba(241,236,225,.45);color:#f1ece1;font-weight:500;padding:13px 24px;border-radius:999px;font-size:15px">Reservar mesa</div>
+          </div>
+        </div>
+        <div style="flex:.92;position:relative;background:repeating-linear-gradient(45deg,#26382c,#26382c 10px,#2c4233 10px,#2c4233 20px);display:flex;align-items:flex-end;justify-content:flex-start;padding:20px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#7e9285;background:rgba(35,42,34,.5);padding:5px 9px;border-radius:5px">foto · prato assinatura</div>
+          <div style="position:absolute;top:24px;right:24px;background:#f1ece1;color:#2c4233;padding:9px 15px;border-radius:12px;font-family:'Instrument Serif',serif;font-size:20px;transform:rotate(4deg)">Menu de outono</div>
+        </div>
+      </div>
+
+      <!-- meta strip -->
+      <div style="display:flex;align-items:center;gap:0;margin-top:26px;border:1px solid #e2dccb;border-radius:16px;background:#faf7ef;overflow:hidden">
+        <div style="flex:1;padding:18px 24px"><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9a9484;margin-bottom:5px">Horário</div><div style="font-size:15px;font-weight:500">Ter–Dom · 12h às 23h</div></div>
+        <div style="width:1px;align-self:stretch;background:#e2dccb"></div>
+        <div style="flex:1;padding:18px 24px"><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9a9484;margin-bottom:5px">Endereço</div><div style="font-size:15px;font-weight:500">Rua das Oliveiras, 88 — Centro</div></div>
+        <div style="width:1px;align-self:stretch;background:#e2dccb"></div>
+        <div style="flex:1;padding:18px 24px"><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9a9484;margin-bottom:5px">Avaliação</div><div style="font-size:15px;font-weight:500">★ 4.9 · 1.240 avaliações</div></div>
+      </div>
+
+      <!-- menu highlights -->
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:56px">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#bf6a43;margin-bottom:10px">O menu</div>
+          <div style="font-family:'Instrument Serif',serif;font-size:42px;line-height:1;letter-spacing:-.01em">Pratos da estação</div>
+        </div>
+        <div style="color:#2c4233;font-weight:600;font-size:15px;border-bottom:1px solid #2c4233;padding-bottom:2px">ver cardápio completo →</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px">
+        <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="6">
+          <div style="background:#faf7ef;border:1px solid #e7e1d2;border-radius:18px;overflow:hidden">
+            <div style="height:160px;background:repeating-linear-gradient(45deg,#e7e1d2,#e7e1d2 10px,#efe9db 10px,#efe9db 20px);display:flex;align-items:flex-end;padding:12px;position:relative">
+              <div style="font-family:'Space Mono',monospace;font-size:10px;color:#a89f8a;background:#faf7efcc;padding:4px 8px;border-radius:5px">foto · prato</div>
+              <div style="position:absolute;top:12px;left:12px;background:#fff;color:#6a7464;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid #e7e1d2">{{ d.tag }}</div>
+            </div>
+            <div style="padding:18px 20px 20px">
+              <div style="font-family:'Instrument Serif',serif;font-size:24px;line-height:1.1">{{ d.name }}</div>
+              <div style="color:#6a7464;font-size:14px;margin:6px 0 16px">{{ d.desc }}</div>
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div style="font-weight:700;font-size:18px">{{ d.price }}</div>
+                <div style="display:flex;align-items:center;gap:8px;background:#2c4233;color:#f1ece1;border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px">Adicionar</div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- about -->
+      <div style="display:flex;gap:36px;margin-top:64px;align-items:stretch">
+        <div style="flex:1;border-radius:22px;background:repeating-linear-gradient(45deg,#e7e1d2,#e7e1d2 10px,#efe9db 10px,#efe9db 20px);min-height:300px;border:1px solid #e7e1d2;display:flex;align-items:flex-end;padding:16px">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;color:#a89f8a;background:#faf7efcc;padding:5px 9px;border-radius:6px">foto · salão / cozinha</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#bf6a43;margin-bottom:14px">A casa</div>
+          <div style="font-family:'Instrument Serif',serif;font-size:38px;line-height:1.05;letter-spacing:-.01em">Uma trattoria de bairro, sem pressa.</div>
+          <div style="font-size:16px;line-height:1.7;color:#5b6755;margin:18px 0 26px">Cozinhamos com o que a horta e a feira oferecem na semana. Massas abertas à mão, fornadas diárias e um atendimento que conhece você pelo nome.</div>
+          <div style="display:flex;gap:14px">
+            <div style="flex:1;background:#faf7ef;border:1px solid #e7e1d2;border-radius:14px;padding:16px"><div style="font-family:'Instrument Serif',serif;font-size:28px">12 anos</div><div style="color:#6a7464;font-size:13px;margin-top:2px">de casa cheia</div></div>
+            <div style="flex:1;background:#faf7ef;border:1px solid #e7e1d2;border-radius:14px;padding:16px"><div style="font-family:'Instrument Serif',serif;font-size:28px">Horta</div><div style="color:#6a7464;font-size:13px;margin-top:2px">própria</div></div>
+            <div style="flex:1;background:#faf7ef;border:1px solid #e7e1d2;border-radius:14px;padding:16px"><div style="font-family:'Instrument Serif',serif;font-size:28px">Menu</div><div style="color:#6a7464;font-size:13px;margin-top:2px">sazonal</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- reservation band -->
+      <sc-if value="{{ showReservation }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:64px;border-radius:24px;background:#2c4233;color:#f1ece1;padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:30px">
+        <div>
+          <div style="font-family:'Instrument Serif',serif;font-size:40px;line-height:1.05">Reserve a sua mesa</div>
+          <div style="font-size:16px;color:#c3ccbd;margin-top:10px;max-width:520px">Atendemos de terça a domingo. Para grupos acima de 8 pessoas, fale direto com a casa pelo WhatsApp.</div>
+        </div>
+        <div style="background:#bf6a43;color:#fcf7ef;font-weight:600;padding:15px 30px;border-radius:999px;font-size:16px;white-space:nowrap">Reservar mesa</div>
+      </div>
+      </sc-if>
+    </div>
+
+    <!-- footer -->
+    <div style="background:#232a22;color:#a7b0a1;padding:40px;display:flex;justify-content:space-between;align-items:center">
+      <div style="display:flex;align-items:center;gap:10px"><div style="width:8px;height:8px;border-radius:50%;background:#bf6a43"></div><span style="font-family:'Instrument Serif',serif;font-size:22px;color:#f1ece1">Casa Oliveira</span><span style="font-size:13px;margin-left:8px">© 2026</span></div>
+      <div style="display:flex;gap:26px;font-size:14px">Instagram · WhatsApp · Termos</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ PEDIDOS ============ -->
+  <sc-if value="{{ isPedidos }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:1080px;margin:0 auto;padding:34px 40px 70px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between">
+      <div style="font-family:'Instrument Serif',serif;font-size:46px;line-height:1;letter-spacing:-.01em">Seu pedido</div>
+      <div onClick="{{ goHome }}" style="cursor:pointer;color:#2c4233;font-weight:600;font-size:15px;border-bottom:1px solid #2c4233;padding-bottom:2px">← voltar ao cardápio</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;margin-top:24px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase">
+      <div style="background:#2c4233;color:#f1ece1;padding:8px 15px;border-radius:999px">1 · Sacola</div>
+      <div style="flex:none;width:30px;height:1px;background:#cfc8b6"></div>
+      <div style="background:#faf7ef;border:1px solid #e2dccb;color:#9a9484;padding:8px 15px;border-radius:999px">2 · Entrega</div>
+      <div style="flex:none;width:30px;height:1px;background:#cfc8b6"></div>
+      <div style="background:#faf7ef;border:1px solid #e2dccb;color:#9a9484;padding:8px 15px;border-radius:999px">3 · Pagamento</div>
+    </div>
+
+    <div style="display:flex;gap:26px;margin-top:28px;align-items:flex-start">
+      <!-- items -->
+      <div style="flex:1.7">
+        <sc-for list="{{ cart }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;gap:16px;align-items:center;background:#faf7ef;border:1px solid #e7e1d2;border-radius:16px;padding:16px;margin-bottom:14px">
+            <div style="flex:none;width:78px;height:78px;border-radius:12px;background:repeating-linear-gradient(45deg,#e7e1d2,#e7e1d2 8px,#efe9db 8px,#efe9db 16px);display:flex;align-items:flex-end;justify-content:flex-start;padding:6px"><span style="font-family:'Space Mono',monospace;font-size:8px;color:#a89f8a">foto</span></div>
+            <div style="flex:1"><div style="font-family:'Instrument Serif',serif;font-size:21px;line-height:1.1">{{ c.name }}</div><div style="color:#6a7464;font-size:13px;margin-top:4px">{{ c.opts }}</div></div>
+            <div style="display:flex;align-items:center;border:1px solid #ddd6c5;border-radius:999px;overflow:hidden">
+              <div style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#6a7464;cursor:pointer">−</div>
+              <div style="padding:0 6px;font-weight:600;min-width:22px;text-align:center">{{ c.qty }}</div>
+              <div style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#2c4233;cursor:pointer">+</div>
+            </div>
+            <div style="width:80px;text-align:right;font-weight:700;font-size:17px">{{ c.price }}</div>
+          </div>
+        </sc-for>
+        <div onClick="{{ goHome }}" style="cursor:pointer;border:1px dashed #cfc8b6;border-radius:14px;padding:15px;text-align:center;color:#6a7464;font-weight:600">+ adicionar mais itens</div>
+      </div>
+
+      <!-- summary -->
+      <div style="flex:1;position:sticky;top:92px;background:#faf7ef;border:1px solid #e7e1d2;border-radius:20px;padding:26px;box-shadow:0 12px 30px rgba(35,42,34,.06)">
+        <div style="font-family:'Instrument Serif',serif;font-size:26px;margin-bottom:18px">Resumo</div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;color:#5b6755;margin-bottom:10px"><div>Subtotal</div><div>R$ 126,00</div></div>
+        <sc-if value="{{ freeDelivery }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;font-size:14px;color:#3f7a52;font-weight:600;margin-bottom:10px"><div>Taxa de entrega</div><div>Grátis</div></div></sc-if>
+        <sc-if value="{{ paidDelivery }}" hint-placeholder-val="{{ true }}"><div style="display:flex;justify-content:space-between;font-size:14px;color:#5b6755;margin-bottom:10px"><div>Taxa de entrega</div><div>R$ 9,00</div></div></sc-if>
+        <div style="display:flex;justify-content:space-between;font-size:14px;color:#5b6755;margin-bottom:16px"><div>Desconto</div><div>− R$ 12,00</div></div>
+        <div style="display:flex;gap:8px;margin-bottom:18px">
+          <div style="flex:1;background:#fff;border:1px solid #e7e1d2;border-radius:11px;padding:11px 13px;color:#9a9484;font-size:14px">cupom…</div>
+          <div style="background:#232a22;color:#f1ece1;border-radius:11px;padding:11px 18px;font-weight:600;font-size:14px">Aplicar</div>
+        </div>
+        <div style="border-top:1px solid #e2dccb;padding-top:16px;display:flex;justify-content:space-between;align-items:baseline"><div style="font-weight:600;font-size:16px">Total</div><div style="font-family:'Instrument Serif',serif;font-size:32px">R$ 123,00</div></div>
+
+        <div style="margin-top:20px;font-weight:600;font-size:14px">Entrega</div>
+        <div style="background:#fff;border:1px solid #e7e1d2;border-radius:11px;padding:12px;color:#9a9484;font-size:14px;margin-top:8px">endereço de entrega…</div>
+        <div style="display:flex;gap:8px;margin-top:8px"><div style="flex:1;background:#fff;border:1px solid #e7e1d2;border-radius:11px;padding:12px;color:#9a9484;font-size:14px">nº</div><div style="flex:2;background:#fff;border:1px solid #e7e1d2;border-radius:11px;padding:12px;color:#9a9484;font-size:14px">complemento</div></div>
+
+        <div style="margin-top:20px;font-weight:600;font-size:14px">Pagamento</div>
+        <div style="display:flex;gap:8px;margin-top:8px;font-size:14px;font-weight:600">
+          <div style="flex:1;border:1.5px solid #2c4233;background:#eef2e9;color:#2c4233;border-radius:11px;padding:11px;text-align:center">Pix</div>
+          <div style="flex:1;border:1px solid #e7e1d2;color:#9a9484;border-radius:11px;padding:11px;text-align:center">Cartão</div>
+          <div style="flex:1;border:1px solid #e7e1d2;color:#9a9484;border-radius:11px;padding:11px;text-align:center">Dinheiro</div>
+        </div>
+
+        <div style="margin-top:22px;background:#bf6a43;color:#fcf7ef;border-radius:14px;padding:15px;text-align:center;font-weight:700;font-size:16px">Finalizar pedido →</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ CADASTRO ============ -->
+  <sc-if value="{{ isCadastro }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:1120px;margin:0 auto;padding:34px 40px 70px">
+
+    <!-- sub-switcher -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#bf6a43;margin-bottom:8px">Cadastros</div>
+        <div style="font-family:'Instrument Serif',serif;font-size:42px;line-height:1;letter-spacing:-.01em">Conta &amp; cardápio</div>
+      </div>
+      <div style="display:flex;background:#faf7ef;border:1px solid #e2dccb;border-radius:999px;padding:5px;gap:4px">
+        <div onClick="{{ goCadCliente }}" style="cursor:pointer;padding:9px 20px;border-radius:999px;font-size:14px;font-weight:600">
+          <sc-if value="{{ cadCliente }}" hint-placeholder-val="{{ true }}"><span style="background:#2c4233;color:#f1ece1;padding:9px 20px;margin:-9px -20px;border-radius:999px;display:inline-block">Conta do cliente</span></sc-if><sc-if value="{{ cadAdmin }}" hint-placeholder-val="{{ false }}"><span style="color:#6a7464">Conta do cliente</span></sc-if>
+        </div>
+        <div onClick="{{ goCadAdmin }}" style="cursor:pointer;padding:9px 20px;border-radius:999px;font-size:14px;font-weight:600">
+          <sc-if value="{{ cadAdmin }}" hint-placeholder-val="{{ false }}"><span style="background:#2c4233;color:#f1ece1;padding:9px 20px;margin:-9px -20px;border-radius:999px;display:inline-block">Cadastro de prato</span></sc-if><sc-if value="{{ cadCliente }}" hint-placeholder-val="{{ true }}"><span style="color:#6a7464">Cadastro de prato</span></sc-if>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- CLIENTE ---- -->
+    <sc-if value="{{ cadCliente }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;margin-top:28px;border:1px solid #e7e1d2;border-radius:24px;overflow:hidden;background:#faf7ef;min-height:540px">
+      <!-- brand panel -->
+      <div style="flex:1;background:#2c4233;color:#f1ece1;padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between;position:relative">
+        <div style="display:flex;align-items:center;gap:9px"><div style="width:9px;height:9px;border-radius:50%;background:#bf6a43"></div><div style="font-family:'Instrument Serif',serif;font-size:24px">Casa Oliveira</div></div>
+        <div>
+          <div style="font-family:'Instrument Serif',serif;font-size:38px;line-height:1.08">Sua mesa começa<br>por aqui.</div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:28px;font-size:15px;color:#c3ccbd">
+            <div style="display:flex;gap:11px;align-items:center"><div style="width:7px;height:7px;border-radius:50%;background:#cf9a7e;flex:none"></div>Pedidos mais rápidos, endereços salvos</div>
+            <div style="display:flex;gap:11px;align-items:center"><div style="width:7px;height:7px;border-radius:50%;background:#cf9a7e;flex:none"></div>Reservas e lista de espera no app</div>
+            <div style="display:flex;gap:11px;align-items:center"><div style="width:7px;height:7px;border-radius:50%;background:#cf9a7e;flex:none"></div>Clube: a cada 10 pratos, 1 por conta da casa</div>
+          </div>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#7e9285">membros desde 2014</div>
+      </div>
+
+      <!-- form -->
+      <div style="flex:1.05;padding:44px 48px;display:flex;flex-direction:column;justify-content:center">
+        <div style="display:flex;background:#f1ece1;border:1px solid #e2dccb;border-radius:999px;padding:5px;gap:4px;width:max-content;margin-bottom:26px">
+          <div onClick="{{ goCriar }}" style="cursor:pointer;padding:8px 20px;border-radius:999px;font-size:14px;font-weight:600">
+            <sc-if value="{{ authCriar }}" hint-placeholder-val="{{ true }}"><span style="background:#fff;color:#232a22;padding:8px 20px;margin:-8px -20px;border-radius:999px;display:inline-block;box-shadow:0 1px 3px rgba(0,0,0,.08)">Criar conta</span></sc-if><sc-if value="{{ authEntrar }}" hint-placeholder-val="{{ false }}"><span style="color:#6a7464">Criar conta</span></sc-if>
+          </div>
+          <div onClick="{{ goEntrar }}" style="cursor:pointer;padding:8px 20px;border-radius:999px;font-size:14px;font-weight:600">
+            <sc-if value="{{ authEntrar }}" hint-placeholder-val="{{ false }}"><span style="background:#fff;color:#232a22;padding:8px 20px;margin:-8px -20px;border-radius:999px;display:inline-block;box-shadow:0 1px 3px rgba(0,0,0,.08)">Entrar</span></sc-if><sc-if value="{{ authCriar }}" hint-placeholder-val="{{ true }}"><span style="color:#6a7464">Entrar</span></sc-if>
+        </div>
+        </div>
+
+        <div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1.05">
+          <sc-if value="{{ authCriar }}" hint-placeholder-val="{{ true }}"><span>Criar sua conta</span></sc-if><sc-if value="{{ authEntrar }}" hint-placeholder-val="{{ false }}"><span>Bem-vindo de volta</span></sc-if>
+        </div>
+        <div style="color:#6a7464;font-size:14px;margin-top:6px;margin-bottom:24px">
+          <sc-if value="{{ authCriar }}" hint-placeholder-val="{{ true }}"><span>Leva menos de um minuto.</span></sc-if><sc-if value="{{ authEntrar }}" hint-placeholder-val="{{ false }}"><span>Entre para continuar seu pedido.</span></sc-if>
+        </div>
+
+        <sc-if value="{{ authCriar }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-bottom:14px"><div style="font-size:13px;font-weight:600;color:#5b6755;margin-bottom:7px">Nome completo</div><div style="background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:13px 15px;color:#9a9484;font-size:15px">como aparece na reserva</div></div>
+        </sc-if>
+        <div style="margin-bottom:14px"><div style="font-size:13px;font-weight:600;color:#5b6755;margin-bottom:7px">E-mail</div><div style="background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:13px 15px;color:#9a9484;font-size:15px">seu melhor e-mail</div></div>
+        <sc-if value="{{ authCriar }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-bottom:14px"><div style="font-size:13px;font-weight:600;color:#5b6755;margin-bottom:7px">Telefone</div><div style="background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:13px 15px;color:#9a9484;font-size:15px">(00) 00000-0000</div></div>
+        </sc-if>
+        <div style="margin-bottom:16px"><div style="font-size:13px;font-weight:600;color:#5b6755;margin-bottom:7px">Senha</div><div style="background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:13px 15px;color:#9a9484;font-size:15px;display:flex;justify-content:space-between"><span>••••••••</span><span style="font-size:13px;color:#bf6a43;font-weight:600">mostrar</span></div></div>
+
+        <div style="background:#bf6a43;color:#fcf7ef;border-radius:12px;padding:14px;text-align:center;font-weight:700;font-size:16px">
+          <sc-if value="{{ authCriar }}" hint-placeholder-val="{{ true }}"><span>Criar conta</span></sc-if><sc-if value="{{ authEntrar }}" hint-placeholder-val="{{ false }}"><span>Entrar</span></sc-if>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;margin:20px 0;color:#9a9484;font-size:13px"><div style="flex:1;height:1px;background:#e2dccb"></div>ou<div style="flex:1;height:1px;background:#e2dccb"></div></div>
+        <div style="display:flex;gap:12px">
+          <div style="flex:1;background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:12px;text-align:center;font-weight:600;font-size:14px;color:#3b463a">Google</div>
+          <div style="flex:1;background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:12px;text-align:center;font-weight:600;font-size:14px;color:#3b463a">Apple</div>
+        </div>
+        <div style="text-align:center;color:#6a7464;font-size:14px;margin-top:22px">
+          <sc-if value="{{ authCriar }}" hint-placeholder-val="{{ true }}"><span>Já tem conta? <span onClick="{{ goEntrar }}" style="cursor:pointer;color:#2c4233;font-weight:600">Entrar</span></span></sc-if><sc-if value="{{ authEntrar }}" hint-placeholder-val="{{ false }}"><span>Novo por aqui? <span onClick="{{ goCriar }}" style="cursor:pointer;color:#2c4233;font-weight:600">Criar conta</span></span></sc-if>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ---- ADMIN (cadastro de prato) ---- -->
+    <sc-if value="{{ cadAdmin }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;gap:24px;margin-top:28px;align-items:flex-start">
+      <!-- slim admin sidebar -->
+      <div style="flex:none;width:200px;background:#232a22;color:#a7b0a1;border-radius:18px;padding:22px 16px">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7e9285;margin-bottom:16px">Painel · admin</div>
+        <div style="display:flex;flex-direction:column;gap:3px;font-size:14px;font-weight:500">
+          <div style="padding:10px 13px;border-radius:9px">Dashboard</div>
+          <div style="padding:10px 13px;border-radius:9px">Pedidos</div>
+          <div style="padding:10px 13px;border-radius:9px;background:#bf6a43;color:#fcf7ef;font-weight:600">Cardápio</div>
+          <div style="padding:10px 13px;border-radius:9px">Promoções</div>
+          <div style="padding:10px 13px;border-radius:9px">Configurações</div>
+        </div>
+      </div>
+
+      <!-- form -->
+      <div style="flex:1.3">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#9a9484;margin-bottom:6px">Cardápio › Novo item</div>
+        <div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1">Cadastrar novo prato</div>
+
+        <div style="background:#faf7ef;border:1px solid #e7e1d2;border-radius:20px;padding:26px;margin-top:18px">
+          <div style="font-size:13px;font-weight:600;color:#5b6755;margin-bottom:8px">Foto do prato</div>
+          <div style="height:130px;border:1.5px dashed #cfc8b6;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;color:#9a9484;font-size:14px;background:#fdfbf5">
+            <div style="width:34px;height:34px;border-radius:50%;background:#f1ece1;display:flex;align-items:center;justify-content:center;color:#bf6a43;font-size:20px;font-weight:600">+</div>
+            arraste uma imagem ou clique para enviar
+          </div>
+
+          <div style="font-size:13px;font-weight:600;color:#5b6755;margin:20px 0 8px">Nome do prato</div>
+          <div style="background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:12px 14px;color:#9a9484;font-size:15px">ex.: Risoto de cogumelos</div>
+
+          <div style="font-size:13px;font-weight:600;color:#5b6755;margin:18px 0 8px">Descrição</div>
+          <div style="background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:12px 14px;height:74px;color:#9a9484;font-size:15px">ingredientes, porção, acompanhamentos…</div>
+
+          <div style="display:flex;gap:16px;margin-top:18px">
+            <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#5b6755;margin-bottom:8px">Categoria</div><div style="background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;color:#232a22;font-size:15px"><span>Massas</span><span style="color:#9a9484">▾</span></div></div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600;color:#5b6755;margin-bottom:8px">Preço (R$)</div><div style="background:#fff;border:1px solid #e7e1d2;border-radius:12px;padding:12px 14px;color:#9a9484;font-size:15px">0,00</div></div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:20px;background:#fdfbf5;border:1px solid #efe9db;border-radius:12px;padding:14px 16px">
+            <div><div style="font-weight:600;font-size:15px">Disponível no cardápio</div><div style="color:#9a9484;font-size:13px">cliente já consegue pedir</div></div>
+            <div style="width:50px;height:29px;background:#3f7a52;border-radius:999px;position:relative"><div style="position:absolute;right:2px;top:2px;width:25px;height:25px;background:#fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.2)"></div></div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:24px">
+            <div style="flex:1;background:#bf6a43;color:#fcf7ef;border-radius:13px;padding:14px;text-align:center;font-weight:700;font-size:16px">Salvar prato</div>
+            <div style="border:1px solid #e7e1d2;color:#5b6755;border-radius:13px;padding:14px 26px;text-align:center;font-weight:600;font-size:16px">Cancelar</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- preview + list -->
+      <div style="flex:1;position:sticky;top:92px">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9a9484;margin-bottom:10px">Pré-visualização</div>
+        <div style="background:#faf7ef;border:1px solid #e7e1d2;border-radius:18px;overflow:hidden">
+          <div style="height:130px;background:repeating-linear-gradient(45deg,#e7e1d2,#e7e1d2 10px,#efe9db 10px,#efe9db 20px);display:flex;align-items:flex-end;padding:10px"><span style="font-family:'Space Mono',monospace;font-size:9px;color:#a89f8a">foto</span></div>
+          <div style="padding:18px 20px">
+            <div style="font-family:'Instrument Serif',serif;font-size:22px">Nome do prato</div>
+            <div style="color:#6a7464;font-size:13px;margin:5px 0 14px">descrição curta…</div>
+            <div style="display:flex;align-items:center;justify-content:space-between"><div style="font-weight:700;font-size:18px">R$ 0,00</div><div style="background:#2c4233;color:#f1ece1;border-radius:999px;padding:7px 15px;font-weight:600;font-size:13px">Adicionar</div></div>
+          </div>
+        </div>
+
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9a9484;margin:22px 0 10px">Já no cardápio · 12</div>
+        <div style="background:#faf7ef;border:1px solid #e7e1d2;border-radius:16px;overflow:hidden">
+          <sc-for list="{{ menuRows }}" as="m" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid #efe9db"><div style="display:flex;align-items:center;gap:11px"><div style="width:30px;height:30px;border-radius:8px;background:repeating-linear-gradient(45deg,#e7e1d2,#e7e1d2 6px,#efe9db 6px,#efe9db 12px)"></div><span style="font-weight:500;font-size:15px">{{ m.name }}</span></div><div style="color:#9a9484;font-size:14px">{{ m.price }} · editar</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:960},&quot;freeDelivery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showReservation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;authDefault&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Criar conta&quot;,&quot;Entrar&quot;],&quot;default&quot;:&quot;Criar conta&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { screen: 'home', cad: 'cliente', authMode: null };
+  renderVals() {
+    const s = this.state.screen;
+    const freeDelivery = this.props.freeDelivery ?? false;
+    const showReservation = this.props.showReservation ?? true;
+    const authMode = this.state.authMode ?? (this.props.authDefault === 'Entrar' ? 'entrar' : 'criar');
+    return {
+      isHome: s === 'home', notHome: s !== 'home',
+      isPedidos: s === 'pedidos', notPedidos: s !== 'pedidos',
+      isCadastro: s === 'cadastro', notCadastro: s !== 'cadastro',
+      goHome: () => this.setState({ screen: 'home' }),
+      goPedidos: () => this.setState({ screen: 'pedidos' }),
+      goCadastro: () => this.setState({ screen: 'cadastro' }),
+      cadCliente: this.state.cad === 'cliente', cadAdmin: this.state.cad === 'admin',
+      goCadCliente: () => this.setState({ cad: 'cliente' }),
+      goCadAdmin: () => this.setState({ cad: 'admin' }),
+      authCriar: authMode === 'criar', authEntrar: authMode === 'entrar',
+      goCriar: () => this.setState({ authMode: 'criar' }),
+      goEntrar: () => this.setState({ authMode: 'entrar' }),
+      freeDelivery, paidDelivery: !freeDelivery, showReservation,
+      dishes: [
+        { name: 'Burrata da casa', desc: 'tomate confit, manjericão, azeite', price: 'R$ 38', tag: 'Entrada' },
+        { name: 'Risoto de funghi', desc: 'cogumelos frescos, parmesão 24m', price: 'R$ 52', tag: 'Mais pedido' },
+        { name: 'Ravioli de abóbora', desc: 'sálvia, manteiga, amêndoas', price: 'R$ 48', tag: 'Da estação' },
+        { name: 'Pesca do dia', desc: 'legumes da horta, limão-siciliano', price: 'R$ 64', tag: 'Fresco' },
+        { name: 'Polpettone', desc: 'molho pomodoro, muçarela de búfala', price: 'R$ 56', tag: 'Clássico' },
+        { name: 'Tiramisù', desc: 'café, cacau, mascarpone', price: 'R$ 28', tag: 'Doce' },
+      ],
+      cart: [
+        { name: 'Risoto de funghi', opts: 'sem cebola · parmesão à parte', qty: 1, price: 'R$ 52' },
+        { name: 'Burrata da casa', opts: 'pão extra', qty: 1, price: 'R$ 38' },
+        { name: 'Chianti (taça)', opts: 'safra da casa', qty: 2, price: 'R$ 36' },
+      ],
+      menuRows: [
+        { name: 'Burrata da casa', price: 'R$ 38' },
+        { name: 'Risoto de funghi', price: 'R$ 52' },
+        { name: 'Ravioli de abóbora', price: 'R$ 48' },
+        { name: 'Tiramisù', price: 'R$ 28' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
