@@ -66,32 +66,3 @@ body {
     border-radius: 50px;
     padding: 12px;
 }
-
-.hero__left{
-    background-color: #2e442d;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-left: 50px;
-    margin-left: 90px;
-    margin-right: 90px;
-    margin-top: 40px;
-    padding: 40px;
-    border-radius: 30px;
-}
-
-.hero__tagline{
-    color:  #cf9a7e;
-    opacity: 80%;
-    
-}
-
-.hero__title{
-    color: var(--color-bg);
-    font-size: 60px;
-}
-
-.hero__description{
-    color: var(--color-bg);
-    opacity: 70%;
-}
