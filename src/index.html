@@ -1,50 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- adicionar favicon -->
-  <title>Casa Oliveira</title>
+  <meta name="description" content="Casa Oliveira é um restaurante de cozinha sazonal em Centro, com massas frescas, pratos da estação e ambiente acolhedor para reservar mesa ou pedir delivery.">
+  <meta name="keywords" content="restaurante, cozinha sazonal, massas frescas, reservar mesa, cardápio, Centro">
+  <meta name="author" content="Casa Oliveira">
+  <meta property="og:title" content="Casa Oliveira | Cozinha sazonal e pratos da estação">
+  <meta property="og:description" content="Descubra o menu de temporada da Casa Oliveira, com ingredientes frescos e pratos preparados com carinho.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="stylesheet" href="./css/global.css">
   <link rel="stylesheet" href="./css/main.css">
+  <title>Casa Oliveira | Restaurante de cozinha sazonal</title>
 </head>
 
 <body>
-  <nav class="nav">
-    <div style="width:9px;height:9px;border-radius:50%;background:#bf6a43"></div>
-    <p class="nav__logo">Casa Oliveira</p>
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="nav__marker" aria-hidden="true"></div>
+    <a class="nav__logo" href="#home">Casa Oliveira</a>
     <ul class="nav__menu">
-      <li class="nav__item">Início</li>
-      <li class="nav__item">Pedidos</li>
-      <li class="nav__item">Cadastro</li>
+      <li class="nav__item"><a href="#home">Início</a></li>
+      <li class="nav__item"><a href="#dishes">Pedidos</a></li>
+      <li class="nav__item"><a href="#about">Cadastro</a></li>
     </ul>
     <div class="nav__buttons">
-      <button class="nav__button nav__button--bag">Sacola ·3</button>
-      <button class="nav__button nav__button--reserve">Reservar mesa</button>
+      <button class="nav__button nav__button--bag" type="button">Sacola ·3</button>
+      <button class="nav__button nav__button--reserve" type="button">Reservar mesa</button>
     </div>
   </nav>
-  <header class="hero">
+
+  <header class="hero" id="home">
     <div class="hero__content">
       <div class="hero__left">
-        <p class="hero__tagline">Cozinha sazonal - desde 2014</p>
-        <h1 class="hero__title">Do campo à mesa,<br>todos os dias</h1>
-        <p class="hero__description">Massas frescas, horta própria e um menu que muda<br>com as estações. Reserve ou
-          peça
-          para viver — a casa<br>é sua.
-        </p>
-        <span class="hero__buttons">
-          <button class="hero__button hero__button--primary">Ver cardápio</button>
-          <button class="hero__button hero__button--secondary">Reservar mesa</button>
-        </span>
+        <p class="hero__tagline">Cozinha sazonal · desde 2014</p>
+        <h1 class="hero__title">Do campo à mesa, todos os dias</h1>
+        <p class="hero__description">Massas frescas, horta própria e um menu que muda com as estações. Reserve ou peça para viver — a casa é sua.</p>
+        <div class="hero__buttons">
+          <a class="hero__button hero__button--primary" href="#dishes">Ver cardápio</a>
+          <a class="hero__button hero__button--secondary" href="#about">Reservar mesa</a>
+        </div>
       </div>
       <div class="hero__right">
-        <img class="hero__image" src="" alt="">
-        <button class="hero__badge">Menu de Outuno</button>
-        <p class="hero__caption">Foto - prato assinatura</p>
+        <img class="hero__image" src="./images/hero.jpg" alt="Prato assinatura da Casa Oliveira servido em mesa elegante" onerror="this.style.display='none'">
+        <button class="hero__badge" type="button">Menu de Outono</button>
+        <p class="hero__caption">Foto · prato assinatura</p>
       </div>
     </div>
-    <div class="info">
+
+    <div class="info" aria-label="Informações principais do restaurante">
       <div class="info__item">
         <p class="info__label">Horário</p>
         <p class="info__value">Ter–Dom · 12h às 23h</p>
@@ -59,45 +65,77 @@
       </div>
     </div>
   </header>
-  <section class="dishes">
-<!--  -->
-    <div class="dishes_title">
-      <h1>Pratos da Estação</h1>
-      <a href="">ver cardápio completo</a>
-    </div>
-    <!-- adicionar javascript para carroussel -->
-    <div class="dishes_card">
-      <div class="cards_item">
-        <img class="cards_img" src="" alt="">
-        <p class="cards_name">Nome do Prato</p>
-        <p class="cards_descr">Descrição do Prato</p>
-        <span class="cards_buy">
-          <p class="cards_price">R$ 00,00</p>
-          <button class="cards_button">Comprar</button>
-        </span>
+
+  <main>
+    <section class="dishes" id="dishes" aria-labelledby="dishes-title">
+      <div class="dishes__title">
+        <h2 id="dishes-title">Pratos da Estação</h2>
+        <a href="#" aria-label="Ver cardápio completo da Casa Oliveira">ver cardápio completo</a>
       </div>
-<!--  -->
-      <div class="cards_item">
-        <img class="cards_img" src="" alt="">
-        <p class="cards_name">Nome do Prato</p>
-        <p class="cards_descr">Descrição do Prato</p>
-        <span class="cards_buy">
-          <p class="cards_price">R$ 00,00</p>
-          <button class="cards_button">Comprar</button>
-        </span>
+
+      <div class="dishes__cards">
+        <article class="dishes__card">
+          <img class="dishes__image" src="./images/prato-1.jpg" alt="Massas frescas com molho de tomate e ervas" onerror="this.style.display='none'">
+          <h3 class="dishes__name">Massas frescas da casa</h3>
+          <p class="dishes__description">Massas artesanais com molho de tomate, ervas e ingredientes da estação.</p>
+          <div class="dishes__buy">
+            <p class="dishes__price">R$ 48,00</p>
+            <button class="dishes__button" type="button">Comprar</button>
+          </div>
+        </article>
+
+        <article class="dishes__card">
+          <img class="dishes__image" src="./images/prato-2.jpg" alt="Prato de legumes assados com especiarias" onerror="this.style.display='none'">
+          <h3 class="dishes__name">Vegetais assados</h3>
+          <p class="dishes__description">Legumes da horta com ervas, azeite e toque de especiarias.</p>
+          <div class="dishes__buy">
+            <p class="dishes__price">R$ 36,00</p>
+            <button class="dishes__button" type="button">Comprar</button>
+          </div>
+        </article>
+
+        <article class="dishes__card">
+          <img class="dishes__image" src="./images/prato-3.jpg" alt="Prato principal com carne suculenta e acompanhamento" onerror="this.style.display='none'">
+          <h3 class="dishes__name">Prato da estação</h3>
+          <p class="dishes__description">Uma combinação equilibrada com proteína, acompanhamento e sabor marcante.</p>
+          <div class="dishes__buy">
+            <p class="dishes__price">R$ 62,00</p>
+            <button class="dishes__button" type="button">Comprar</button>
+          </div>
+        </article>
       </div>
-<!--  -->
-      <div class="cards_item">
-        <img class="cards_img" src="" alt="">
-        <p class="cards_name">Nome do Prato</p>
-        <p class="cards_descr">Descrição do Prato</p>
-        <span class="cards_buy">
-          <p class="cards_price">R$ 00,00</p>
-          <button class="cards_button">Comprar</button>
-        </span>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about__image" aria-label="Ambiente acolhedor do restaurante">
+        <img src="" alt="">
+        <p>foto · salão / cozinha</p>
       </div>
-    </div>
-  </section>
+
+      <div class="about__info">
+        <div class="about__intro">
+          <p class="about__eyebrow">A casa</p>
+          <h2 id="about-title" class="about__title">Uma trattoria de bairro, sem pressa.</h2>
+          <p class="about__description">Cozinhamos com o que a horta e a feira oferecem na semana. Massas abertas à mão, fornadas diárias e um atendimento que conhece você pelo nome.</p>
+        </div>
+
+        <div class="about__cards">
+          <article class="about__card">
+            <h3 class="about__card-title">12 anos</h3>
+            <p class="about__card-text">de casa cheia</p>
+          </article>
+          <article class="about__card">
+            <h3 class="about__card-title">Horta</h3>
+            <p class="about__card-text">própria</p>
+          </article>
+          <article class="about__card">
+            <h3 class="about__card-title">Menu</h3>
+            <p class="about__card-text">sazonal</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
